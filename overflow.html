@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>overflow-thinking</title>
+    <style>
+        div{
+            margin: 0px;
+            padding: 0px;
+        }
+        .span-box{
+            background: #aca4a4;
+        }
+        .span-overflow{
+            font-size: 16px;
+            height: 40px;
+            line-height: 40px;
+            margin:0px;
+            display: inline-block;
+            overflow-y: hidden;
+        }
+        .overflow-box{
+            margin-top: 10px;
+            /* height: 30px; */
+            background: red;
+            overflow: hidden;
+        }
+        .span-float{
+            float: right;
+            height: 100px;
+            width: 100px;
+            margin-left: 50px;
+            background: #333;
+        }
+        .parent-test-float{
+            height: auto;
+            min-width: 200px;
+            background: #aca4a4;
+        }
+        .parent-test-float > div:nth-of-type(1){
+            float: left;
+            height: 100%;
+            margin-right: 20px;
+        }
+        .parent-test-float > p{
+            margin-left: 140px;
+        }
+        .parent-test-inline-block{
+            height: auto;
+            min-width: 200px;
+            background: #aca4a4;
+        }
+        .parent-test-inline-block > div{
+            display: inline-block;
+        }
+        .parent-test-inline-block > p{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        这里遇到的问题是 span同时设置了display:inline-block; overflow:hidden;<br>
+        并且父元素并没有设置高度，按理来说其高度会与子元素一致,但是效果并不是这样，(子元素并没有设置margin);<br>
+        父元素的高度变为了44px; 如果去掉display或者overflow 属性, 父元素的高度立即变为40px;
+    </p>  
+    <p> 如果去掉overflow或者display 问题将解决</p>  
+    <p>overflow <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow">MDN解释</a><br>
+      关键的一点 : overflow 属性指定当内容溢出其块级容器时 才决定是否裁剪内容块，overflow只对块级元素起作用 <br>
+      关键的两点:  overflow 默认值（visible）以外的值将创建一个新的 块级格式化上下文
+    </p>
+    <p>display:inline-block 这是一个不主动换行的block元素 
+    <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display">MDN display</a>
+    </p>
+    <div class="span-box">
+        <span class="span-overflow">这是一个span</span>
+    </div>
+    <p>利用overflow:hidden; 使父元素与子元素的高度一致</p>
+    <div class="overflow-box">
+        <span class="span-float">这是一个span</span>
+    </div>
+    <p> 子元素使用float 父元素height 根据子元素的height更改</p>
+    <div class="parent-test-float">
+        <div>这是左边的内容</div>
+        <p> 
+            这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+            这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+            内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+        </p>
+    </div>
+    <p> 子元素使用inline-block 父元素height 根据子元素的height更改</p>
+    <div class="parent-test-inline-block">
+            <div>这是左边的内容</div>
+            <p> 
+                这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+                这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+                内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+            </p>
+        </div>
+</body>
+</html>
