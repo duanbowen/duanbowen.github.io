@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css 三角形</title>
+  <style>
+    body{
+      margin: 12px;
+    }
+    .square-pure{
+      border-left: 40px solid #000;
+      border-top: 40px solid #333;
+      border-right: 40px solid #666;
+      border-bottom: 40px solid #999;
+      width: 100px;
+      height: 100px;
+      background: #ccc;
+    }
+    .triangle-pure {
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+      /* border-top: 40px solid #333; */
+      border-bottom: 40px solid #999;
+      width: 0px;
+      height: 0px;
+      /* background: #ccc; */
+    }
+    article{
+      margin: 8px 0;
+    }
+    .triangle-pure-euqal{
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+      border-bottom: 57px solid green;
+      width: 0px;
+      height: 0px;
+      background: #ccc;
+    }
+    .triangle-pure-right-angle{
+      border-left: 40px solid transparent;
+      /* border-right: 40px solid transparent; */
+      border-bottom: 60px solid green;
+      width: 0px;
+      height: 0px;
+      background: #ccc;
+    }
+    .triangle-color-border{
+      position: relative;
+      width: 300px;
+      height: 80px;
+      border: 1px solid #3e3e3e;
+    }
+    .triangle-color-border:before{
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 32px; 
+      border-right: 10px solid green;
+      border-top: 6px solid transparent;
+      border-bottom:  6px solid transparent;
+    }
+    .triangle-color-border:after{
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: 32px; 
+      border-right: 10px solid #fff;
+      border-top: 6px solid transparent;
+      border-bottom:  6px solid transparent;
+    }
+
+    .triangle-color-border-filter{
+      position: relative;
+      width: 300px;
+      height: 80px;
+      border: 1px solid #3e3e3e;
+      filter: drop-shadow(0 0 2px #999);
+      background: #fff;
+    }
+    .triangle-color-border-filter:before{
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 32px; 
+      border-right: 10px solid green;
+      border-top: 6px solid transparent;
+      border-bottom:  6px solid transparent;
+    }
+    .triangle-color-border-filter:after{
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 32px; 
+      border-right: 10px solid #fff;
+      border-top: 6px solid transparent;
+      border-bottom:  6px solid transparent;
+    }
+
+  </style>
+</head>
+<body>
+  <header>css 画一个三角形</header>
+  <main>
+    <div class="square-pure"></div>
+    <article><b>纯色三角形</b></article>
+    <ol>
+      <li>
+        <article>等腰三角形</article>
+        <p>去掉方块的width height时，一定要将背景色去掉</p>
+        <div class="triangle-pure"></div>
+      </li>
+      <li>
+          <article>等边三角形</article>
+          <div class="triangle-pure-euqal"></div>
+      </li>
+      <li>
+          <article>直角三角形</article>
+          <div class="triangle-pure-right-angle"></div>
+      </li>
+      <li>
+          <article>画一个有边缘色的三角形</article>
+          <p>利用伪元素before after，先画一个深色的三角形，在来一个白色的覆盖上去。</p>
+          <div class="triangle-color-border"></div>
+      </li>
+      <li>
+          <article>画一个有边缘色的三角形 带阴影</article>
+          <p>一定要加上background</p>
+          <div class="triangle-color-border-filter"></div>
+      </li>
+    </ol>
+    
+  </main>
+</body>
+</html>
