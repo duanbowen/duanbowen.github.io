@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>伪元素的操作</title>
+  <style>
+    .or{
+      position: relative;
+      text-align: center;
+    }
+    .or::before{
+      left: 0px;
+    }
+    .or::after{
+      right: 0px;
+    }
+    .or::before, .or::after{
+      content: "";
+      width: 200px;
+      top: 12px;
+      position: absolute;
+      height: 1px;
+      background: #ccc;
+    }
+    .choose {
+      counter-reset: fruit;
+    }
+    .choose input:checked{
+      counter-increment: fruit;
+    }
+    .count::before{
+      content: counter(fruit)
+    }
+  </style>
+</head>
+<body>
+  <ol>
+    <li>
+      <article>画分割线</article>
+      <p class="or">Or</p>
+      <span>or内容相对定位，before after 绝对定位，左右一边一块。position:absolute 会将元素强行 display:block</span>
+    </li>
+    <li>
+      <article>纯css 计数</article>
+      <div class="choose">
+        <label><input type="checkbox"/> 苹果</label>
+        <label><input type="checkbox"/> 香蕉</label>
+        <label><input type="checkbox"/> 梨子</label>
+        <label><input type="checkbox"/> 桃子</label>
+      </div>
+      <p>一共选了<span class="count"></span>种水果</p>
+    </li>
+  </ol>
+</body>
+</html>
